@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditableCV_backend", "EditableCV_backend.csproj", "{859076B5-2023-4B00-82FC-94148C39B81E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{859076B5-2023-4B00-82FC-94148C39B81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859076B5-2023-4B00-82FC-94148C39B81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859076B5-2023-4B00-82FC-94148C39B81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859076B5-2023-4B00-82FC-94148C39B81E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE3B8391-7D36-4318-9908-B1182F25EC05}
+	EndGlobalSection
+EndGlobal
