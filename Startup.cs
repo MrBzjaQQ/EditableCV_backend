@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,9 +27,12 @@ namespace EditableCV_backend
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddDbContext<ResumeContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("ResumeConnection")));
+
       services.AddControllers();
 
-      services.AddScoped<IWorkPlaceRepository, MockWorkPlaceRepository>();
+      services.AddScoped<IWorkPlaceRepository, SqlWorkPlaceRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

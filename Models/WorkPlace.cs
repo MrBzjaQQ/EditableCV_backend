@@ -11,8 +11,10 @@ namespace EditableCV_backend.Models
     [Key]
     public int Id { get; set; }
     [Required]
+    [MaxLength(250)]
     public string CompanyName { get; set; }
     [Required]
+    [MaxLength(250)]
     public string Position { get; set; }
     public string Experience { get; set; }
     [Required]
