@@ -45,6 +45,21 @@ namespace EditableCV_backend.Controllers
       WorkPlaceReadDto readPlace = _mapper.Map<WorkPlaceReadDto>(place);
       return CreatedAtRoute(nameof(GetWorkPlace), new { Id = readPlace.Id }, readPlace);
     }
+    [HttpPut("{id}")]
+    public ActionResult PutWorkPlace(int id, WorkPlaceUpdateDto workPlaceDto)
+    {
+      WorkPlace workPlaceFromRepo = _repository.GetWorkPlaceById(id);
+      if (workPlaceFromRepo == null)
+      {
+        return NotFound();
+      }
+      // updated work place for db context
+      _mapper.Map(workPlaceDto, workPlaceFromRepo);
+      // does nothing for current implementation, but it should be called because under _repository may be another implementation
+      _repository.UpdateWorkPlace(workPlaceFromRepo);
+      _repository.SaveChanges();
+      return NoContent();
+    }
 
     private readonly IWorkPlaceRepository _repository;
     private readonly IMapper _mapper;

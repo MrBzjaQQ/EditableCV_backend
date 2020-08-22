@@ -37,6 +37,11 @@ namespace EditableCV_backend.Data
       _context.WorkPlaces.Add(place);
     }
 
+    public void UpdateWorkPlace(WorkPlace place)
+    {
+      // Nothing here
+    }
+
     private readonly ResumeContext _context;
   }
 }

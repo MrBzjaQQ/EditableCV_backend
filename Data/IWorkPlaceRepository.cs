@@ -12,5 +12,6 @@ namespace EditableCV_backend.Data
     IEnumerable<WorkPlace> GetAllWorkPlaces();
     WorkPlace GetWorkPlaceById(int id);
     void CreateWorkPlace(WorkPlace place);
+    void UpdateWorkPlace(WorkPlace place);
   }
 }
