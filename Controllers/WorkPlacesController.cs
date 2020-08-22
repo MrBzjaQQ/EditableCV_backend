@@ -7,6 +7,7 @@ using EditableCV_backend.Data;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditableCV_backend.Controllers
@@ -55,6 +56,29 @@ namespace EditableCV_backend.Controllers
       }
       // updated work place for db context
       _mapper.Map(workPlaceDto, workPlaceFromRepo);
+      // does nothing for current implementation, but it should be called because under _repository may be another implementation
+      _repository.UpdateWorkPlace(workPlaceFromRepo);
+      _repository.SaveChanges();
+      return NoContent();
+    }
+    [HttpPatch("{id}")]
+    public ActionResult PatchWorkPlace(int id, JsonPatchDocument<WorkPlaceUpdateDto> patchDocument)
+    {
+      WorkPlace workPlaceFromRepo = _repository.GetWorkPlaceById(id);
+      if (workPlaceFromRepo == null)
+      {
+        return NotFound();
+      }
+
+      WorkPlaceUpdateDto workPlaceToPatch = _mapper.Map<WorkPlaceUpdateDto>(workPlaceFromRepo);
+      patchDocument.ApplyTo(workPlaceToPatch, ModelState);
+      if (!TryValidateModel(workPlaceToPatch))
+      {
+        return ValidationProblem(ModelState);
+      }
+
+      // updated work place for db context
+      _mapper.Map(workPlaceToPatch, workPlaceFromRepo);
       // does nothing for current implementation, but it should be called because under _repository may be another implementation
       _repository.UpdateWorkPlace(workPlaceFromRepo);
       _repository.SaveChanges();

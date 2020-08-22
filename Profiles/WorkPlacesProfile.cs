@@ -15,6 +15,7 @@ namespace EditableCV_backend.Profiles
       CreateMap<WorkPlace, WorkPlaceReadDto>();
       CreateMap<WorkPlaceCreateDto, WorkPlace>();
       CreateMap<WorkPlaceUpdateDto, WorkPlace>();
+      CreateMap<WorkPlace, WorkPlaceUpdateDto>();
     }
   }
 }
