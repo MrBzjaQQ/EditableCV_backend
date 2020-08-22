@@ -13,8 +13,6 @@ namespace EditableCV_backend.Data
       _context = context;
     }
 
-    private readonly ResumeContext _context;
-
     public IEnumerable<WorkPlace> GetAllWorkPlaces()
     {
       return _context.WorkPlaces.ToList();
@@ -24,5 +22,21 @@ namespace EditableCV_backend.Data
     {
       return _context.WorkPlaces.FirstOrDefault(item => item.Id == id);
     }
+
+    public bool SaveChanges()
+    {
+      return _context.SaveChanges() >= 0;
+    }
+
+    public void CreateWorkPlace(WorkPlace place)
+    {
+      if (place == null)
+      {
+        throw new ArgumentNullException(nameof(place));
+      }
+      _context.WorkPlaces.Add(place);
+    }
+
+    private readonly ResumeContext _context;
   }
 }

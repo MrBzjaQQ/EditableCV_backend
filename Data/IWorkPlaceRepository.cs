@@ -8,7 +8,9 @@ namespace EditableCV_backend.Data
 {
   public interface IWorkPlaceRepository
   {
+    bool SaveChanges();
     IEnumerable<WorkPlace> GetAllWorkPlaces();
     WorkPlace GetWorkPlaceById(int id);
+    void CreateWorkPlace(WorkPlace place);
   }
 }

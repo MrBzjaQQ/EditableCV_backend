@@ -16,9 +16,8 @@ namespace EditableCV_backend.Migrations
                     CompanyName = table.Column<string>(maxLength: 250, nullable: false),
                     Position = table.Column<string>(maxLength: 250, nullable: false),
                     Experience = table.Column<string>(nullable: true),
-                    StartWorkingTime = table.Column<DateTime>(nullable: false),
-                    IsCurrentlyWorking = table.Column<bool>(nullable: false),
-                    EndWorkingTime = table.Column<DateTime>(nullable: false),
+                    StartWorkingDate = table.Column<DateTime>(nullable: false),
+                    EndWorkingDate = table.Column<DateTime>(nullable: false),
                     CompanyIcon = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>

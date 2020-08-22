@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EditableCV_backend.Migrations
 {
     [DbContext(typeof(ResumeContext))]
-    [Migration("20200819053910_InitialMigration")]
+    [Migration("20200822080733_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,21 +36,18 @@ namespace EditableCV_backend.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<DateTime>("EndWorkingTime")
+                    b.Property<DateTime>("EndWorkingDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Experience")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsCurrentlyWorking")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Position")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<DateTime>("StartWorkingTime")
+                    b.Property<DateTime>("StartWorkingDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
