@@ -42,6 +42,15 @@ namespace EditableCV_backend.Data
       // Nothing here
     }
 
+    public void DeleteWorkPlace(WorkPlace place)
+    {
+      if (place == null)
+      {
+        throw new ArgumentNullException(nameof(place));
+      }
+      _context.WorkPlaces.Remove(place);
+    }
+
     private readonly ResumeContext _context;
   }
 }

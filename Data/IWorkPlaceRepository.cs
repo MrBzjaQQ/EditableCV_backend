@@ -13,5 +13,6 @@ namespace EditableCV_backend.Data
     WorkPlace GetWorkPlaceById(int id);
     void CreateWorkPlace(WorkPlace place);
     void UpdateWorkPlace(WorkPlace place);
+    void DeleteWorkPlace(WorkPlace place);
   }
 }

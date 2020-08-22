@@ -84,6 +84,14 @@ namespace EditableCV_backend.Controllers
       _repository.SaveChanges();
       return NoContent();
     }
+    [HttpDelete("{id}")]
+    public ActionResult<WorkPlaceReadDto> DeleteWorkPlace(int id)
+    {
+      WorkPlace workPlaceFromRepo = _repository.GetWorkPlaceById(id);
+      _repository.DeleteWorkPlace(workPlaceFromRepo);
+      _repository.SaveChanges();
+      return Ok(_mapper.Map<WorkPlaceReadDto>(workPlaceFromRepo));
+    }
 
     private readonly IWorkPlaceRepository _repository;
     private readonly IMapper _mapper;
