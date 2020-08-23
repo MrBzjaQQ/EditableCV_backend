@@ -45,7 +45,7 @@ namespace EditableCV_backend.Data
       {
         throw new ArgumentNullException(nameof(place));
       }
-      _works.Remove(place);
+      _works.Remove(_works.FirstOrDefault(item => item.Id == place.Id));
     }
 
     public IEnumerable<WorkPlace> GetAllWorkPlaces()
