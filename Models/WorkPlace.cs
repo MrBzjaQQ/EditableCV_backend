@@ -9,6 +9,16 @@ namespace EditableCV_backend.Models
 {
   public class WorkPlace
   {
+    public WorkPlace() { }
+    public WorkPlace(WorkPlace place)
+    {
+      Id = place.Id;
+      CompanyName = place.CompanyName;
+      Position = place.Position;
+      Experience = place.Experience;
+      StartWorkingDate = place.StartWorkingDate;
+      EndWorkingDate = place.EndWorkingDate;
+    }
     [Key]
     public int Id { get; set; }
     [Required]
@@ -24,7 +34,5 @@ namespace EditableCV_backend.Models
     [Required]
     [Column(TypeName = "date")]
     public DateTime EndWorkingDate { get; set; }
-    public byte[] CompanyIcon { get; set; }
-
   }
 }
