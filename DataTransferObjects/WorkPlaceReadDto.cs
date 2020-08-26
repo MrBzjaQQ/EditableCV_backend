@@ -24,6 +24,5 @@ namespace EditableCV_backend.DataTransferObjects
       }
     }
     public DateTime EndWorkingDate { get; set; }
-    public byte[] CompanyIcon { get; set; }
   }
 }

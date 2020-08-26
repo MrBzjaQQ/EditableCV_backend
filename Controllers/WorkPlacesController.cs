@@ -41,10 +41,16 @@ namespace EditableCV_backend.Controllers
     public ActionResult<WorkPlaceReadDto> PostWorkPlace(WorkPlaceCreateDto workPlaceDto)
     {
       WorkPlace place = _mapper.Map<WorkPlace>(workPlaceDto);
+      if (!place.IsValid)
+      {
+        ModelState.AddModelError("ModelValidationError", "Received workplace data is invalid");
+        return BadRequest(ModelState);
+      }
       _repository.CreateWorkPlace(place);
       _repository.SaveChanges();
       WorkPlaceReadDto readPlace = _mapper.Map<WorkPlaceReadDto>(place);
       return CreatedAtRoute(nameof(GetWorkPlace), new { Id = readPlace.Id }, readPlace);
+
     }
     [HttpPut("{id}")]
     public ActionResult PutWorkPlace(int id, WorkPlaceUpdateDto workPlaceDto)
