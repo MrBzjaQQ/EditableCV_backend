@@ -16,6 +16,7 @@ namespace EditableCV_backend.Data
           Id = 1,
           CompanyName = "Big company 1",
           Position = "Big position",
+          Experience = "Many",
           StartWorkingDate = new DateTime(2020, 06, 06),
           EndWorkingDate = new DateTime(2021, 06, 06),
         },
@@ -23,6 +24,7 @@ namespace EditableCV_backend.Data
           Id = 2,
           CompanyName = "Small company 1",
           Position = "Small position",
+          Experience = "Bad",
           StartWorkingDate = new DateTime(2019, 06, 06),
           EndWorkingDate = new DateTime(2020, 06, 06),
         },
@@ -86,7 +88,7 @@ namespace EditableCV_backend.Data
       {
         throw new Exception("not found");
       }
-      WorkPlace updatedPlace = new WorkPlace(savedPlace);
+      WorkPlace updatedPlace = new WorkPlace(place);
       int index =_works.IndexOf(savedPlace);
       _works[index] = updatedPlace;
     }
