@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EditableCV_backend.Data;
+using EditableCV_backend.Data.CommonInfoData;
+using EditableCV_backend.Data.ImageData;
+using EditableCV_backend.Data.WorkPlaceData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +42,8 @@ namespace EditableCV_backend
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
       services.AddScoped<IWorkPlaceRepository, SqlWorkPlaceRepository>();
+      services.AddScoped<IImageDataRepository, SqlImageDataRepository>();
+      services.AddScoped<ICommonInfoRepository, SqlCommonInfoRepository>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

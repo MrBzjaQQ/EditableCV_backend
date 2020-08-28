@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using EditableCV_backend.Data;
+using EditableCV_backend.Data.WorkPlaceData;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.Models;
 using Microsoft.AspNetCore.Http;

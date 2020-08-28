@@ -1,6 +1,6 @@
 using AutoMapper;
 using EditableCV_backend.Controllers;
-using EditableCV_backend.Data;
+using EditableCV_backend.Data.WorkPlaceData;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.Models;
 using EditableCV_backend.Profiles;
