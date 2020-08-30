@@ -23,7 +23,7 @@ namespace EditableCV_backend.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<InstitutionReadDto>> GetAllinstitutions()
+    public ActionResult<IEnumerable<InstitutionReadDto>> GetAllInstitutions()
     {
       IEnumerable<EducationalInstitution> institutions = _repository.GetAllInstitutions();
       return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(institutions));

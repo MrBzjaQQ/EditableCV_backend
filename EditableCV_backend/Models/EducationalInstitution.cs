@@ -10,6 +10,16 @@ namespace EditableCV_backend.Models
 {
   public class EducationalInstitution
   {
+    public EducationalInstitution() { }
+    public EducationalInstitution(EducationalInstitution inst)
+    {
+      Id = inst.Id;
+      Institution = inst.Institution;
+      Faculty = inst.Faculty;
+      StartDate = inst.StartDate;
+      EndDate = inst.EndDate;
+      Progress = inst.Progress;
+    }
     [Key]
     public int Id { get; set; }
     [Required]
