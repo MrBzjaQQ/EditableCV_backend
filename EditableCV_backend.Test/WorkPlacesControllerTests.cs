@@ -1,7 +1,7 @@
 using AutoMapper;
 using EditableCV_backend.Controllers;
 using EditableCV_backend.Data.WorkPlaceData;
-using EditableCV_backend.DataTransferObjects;
+using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using EditableCV_backend.Profiles;
 using Microsoft.AspNetCore.JsonPatch;
@@ -116,6 +116,7 @@ namespace EditableCV_backend.Test
     [Fact]
     public void PatchWorkPlace_ShouldUpdateModel()
     {
+      // Arrange
       JsonPatchDocument<WorkPlaceUpdateDto> patchDoc = new JsonPatchDocument<WorkPlaceUpdateDto>(
         new List<Microsoft.AspNetCore.JsonPatch.Operations.Operation<WorkPlaceUpdateDto>>
         {
@@ -124,6 +125,7 @@ namespace EditableCV_backend.Test
         },
         new DefaultContractResolver()
       );
+      // Act & Assert
       Assert.IsType<NoContentResult>(_controller.PatchWorkPlace(ID, patchDoc));
       var okResult = Assert.IsType<OkObjectResult>(_controller.GetWorkPlace(ID).Result);
       var itemData = Assert.IsType<WorkPlaceReadDto>(okResult.Value);
@@ -134,6 +136,7 @@ namespace EditableCV_backend.Test
     [Fact]
     public void PatchWorkPlace_ShouldReturnValidationProblem()
     {
+      // TODO: NOT FINISHED
       JsonPatchDocument<WorkPlaceUpdateDto> patchDoc = new JsonPatchDocument<WorkPlaceUpdateDto>(
         new List<Microsoft.AspNetCore.JsonPatch.Operations.Operation<WorkPlaceUpdateDto>>
         {
@@ -142,6 +145,7 @@ namespace EditableCV_backend.Test
         },
         new DefaultContractResolver()
       );
+      Assert.IsType<BadRequestObjectResult>(_controller.PatchWorkPlace(ID, patchDoc));
     }
 
     private readonly MockWorkPlaceRepository _repo;

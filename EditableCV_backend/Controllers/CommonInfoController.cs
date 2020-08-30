@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EditableCV_backend.Data.CommonInfoData;
 using EditableCV_backend.DataTransferObjects;
+using EditableCV_backend.DataTransferObjects.CommonInfoDto;
 using EditableCV_backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

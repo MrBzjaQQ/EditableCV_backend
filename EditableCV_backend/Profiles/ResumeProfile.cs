@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using EditableCV_backend.DataTransferObjects;
+using EditableCV_backend.DataTransferObjects.CommonInfoDto;
+using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using System;
 using System.Collections.Generic;
