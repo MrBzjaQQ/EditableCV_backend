@@ -136,7 +136,6 @@ namespace EditableCV_backend.Test
     [Fact]
     public void PatchWorkPlace_ShouldReturnValidationProblem()
     {
-      // TODO: NOT FINISHED
       JsonPatchDocument<WorkPlaceUpdateDto> patchDoc = new JsonPatchDocument<WorkPlaceUpdateDto>(
         new List<Microsoft.AspNetCore.JsonPatch.Operations.Operation<WorkPlaceUpdateDto>>
         {

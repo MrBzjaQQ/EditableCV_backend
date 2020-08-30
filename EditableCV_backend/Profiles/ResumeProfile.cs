@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.DataTransferObjects.CommonInfoDto;
+using EditableCV_backend.DataTransferObjects.EducationalInstitutionDto;
 using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using System;
@@ -27,6 +28,11 @@ namespace EditableCV_backend.Profiles
           dto => dto.Age,
           info => info.MapFrom(commonInfo => GetAgeByDateOfBirth(commonInfo.DateOfBirth))
         );
+
+      CreateMap<EducationalInstitution, InstitutionReadDto>();
+      CreateMap<InstitutionCreateDto, EducationalInstitution>();
+      CreateMap<InstitutionUpdateDto, EducationalInstitution>();
+      CreateMap<EducationalInstitution, InstitutionUpdateDto>();
     }
 
     private int GetAgeByDateOfBirth(DateTime dateOfBirth)

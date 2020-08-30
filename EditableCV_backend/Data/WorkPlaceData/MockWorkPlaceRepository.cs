@@ -65,14 +65,7 @@ namespace EditableCV_backend.Data.WorkPlaceData
       _savedWorks = new List<WorkPlace>();
       foreach (var place in _works)
       {
-        _savedWorks.Add(new WorkPlace
-        {
-          Id = place.Id,
-          CompanyName = place.CompanyName,
-          Position = place.Position,
-          StartWorkingDate = place.StartWorkingDate,
-          EndWorkingDate = place.EndWorkingDate,
-        });
+        _savedWorks.Add(new WorkPlace(place));
       }
       return true;
     }
@@ -83,7 +76,7 @@ namespace EditableCV_backend.Data.WorkPlaceData
       {
         throw new ArgumentNullException(nameof(place));
       }
-      WorkPlace savedPlace = _works.FirstOrDefault<WorkPlace>(item => item.Id == place.Id);
+      WorkPlace savedPlace = _works.FirstOrDefault(item => item.Id == place.Id);
       if (savedPlace == null)
       {
         throw new Exception("not found");
