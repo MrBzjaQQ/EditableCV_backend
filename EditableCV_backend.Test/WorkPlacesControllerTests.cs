@@ -22,7 +22,7 @@ namespace EditableCV_backend.Test
     public WorkPlacesControllerTests()
     {
       _repo = new MockWorkPlaceRepository();
-      _profile = new WorkPlacesProfile();
+      _profile = new ResumeProfile();
       _config = new MapperConfiguration(p => p.AddProfile(_profile));
       _mapper = new Mapper(_config);
       var mockValidator = new Mock<IObjectModelValidator>();
@@ -145,7 +145,7 @@ namespace EditableCV_backend.Test
     }
 
     private readonly MockWorkPlaceRepository _repo;
-    private readonly WorkPlacesProfile _profile;
+    private readonly ResumeProfile _profile;
     private readonly MapperConfiguration _config;
     private readonly Mapper _mapper;
     private readonly WorkPlacesController _controller;

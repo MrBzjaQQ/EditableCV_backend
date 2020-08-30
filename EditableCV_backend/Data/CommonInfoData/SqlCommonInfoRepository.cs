@@ -32,7 +32,7 @@ namespace EditableCV_backend.Data.CommonInfoData
       var commonInfo = GetCommonInfo();
       if (commonInfo == null)
       {
-        _context.Add(commonInfo);
+        _context.Add(info);
       }
     }
 
