@@ -45,6 +45,7 @@ namespace EditableCV_backend.Controllers
       if (!place.IsValid)
       {
         ModelState.AddModelError("ModelValidationError", "Received work place data is invalid");
+        // TODO: return ValidationProblem
         return BadRequest(ModelState);
       }
       _repository.CreateWorkPlace(place);
@@ -84,6 +85,7 @@ namespace EditableCV_backend.Controllers
       if (!workPlace.IsValid)
       {
         ModelState.AddModelError("ModelValidationError", "Received work place data is invalid");
+        // TODO: return ValidationProblem
         return BadRequest(ModelState);
       }
       // does nothing for current implementation, but it should be called because under _repository may be another implementation
@@ -95,6 +97,10 @@ namespace EditableCV_backend.Controllers
     public ActionResult<WorkPlaceReadDto> DeleteWorkPlace(int id)
     {
       WorkPlace workPlaceFromRepo = _repository.GetWorkPlaceById(id);
+      if (workPlaceFromRepo == null)
+      {
+        return NotFound();
+      }
       _repository.DeleteWorkPlace(workPlaceFromRepo);
       _repository.SaveChanges();
       return Ok(_mapper.Map<WorkPlaceReadDto>(workPlaceFromRepo));

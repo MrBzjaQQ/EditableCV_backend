@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EditableCV_backend.Data;
 using EditableCV_backend.Data.CommonInfoData;
+using EditableCV_backend.Data.EducationInstitutionData;
 using EditableCV_backend.Data.ImageData;
 using EditableCV_backend.Data.WorkPlaceData;
 using Microsoft.AspNetCore.Builder;
@@ -44,6 +45,7 @@ namespace EditableCV_backend
       services.AddScoped<IWorkPlaceRepository, SqlWorkPlaceRepository>();
       services.AddScoped<IImageDataRepository, SqlImageDataRepository>();
       services.AddScoped<ICommonInfoRepository, SqlCommonInfoRepository>();
+      services.AddScoped<IEducationRepository, SqlEducationRepository>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

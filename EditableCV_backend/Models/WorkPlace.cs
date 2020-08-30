@@ -40,28 +40,28 @@ namespace EditableCV_backend.Models
     {
       get
       {
-        bool hasError = false;
+        bool isValid = true;
         if(CompanyName == null || CompanyName == string.Empty)
         {
-          hasError = true;
+          isValid = false;
         }
         if (Position == null || Position == string.Empty)
         {
-          hasError = true;
+          isValid = false;
         }
         if (DateTime.MinValue.CompareTo(StartWorkingDate) == 0)
         {
-          hasError = true;
+          isValid = false;
         }
         if (DateTime.MinValue.CompareTo(EndWorkingDate) == 0)
         {
-          hasError = true;
+          isValid = false;
         }
         if (EndWorkingDate.CompareTo(StartWorkingDate) < 0)
         {
-          hasError = true;
+          isValid = false;
         }
-        return !hasError;
+        return isValid;
       }
     }
   }
