@@ -1,28 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace EditableCV_backend.DataTransferObjects
+namespace EditableCV_backend.DataTransferObjects.WorkPlaceDto
 {
-  public class WorkPlaceReadDto
+  public class WorkPlaceUpdateDto
   {
-    public int Id { get; set; }
+    [Required]
     public string CompanyName { get; set; }
+    [Required]
     public string Position { get; set; }
     public string Experience { get; set; }
+    [Required]
     public DateTime StartWorkingDate { get; set; }
-    public bool IsCurrentlyWorking {
-      get
-      {
-        return DateTime.Compare(EndWorkingDate, DateTime.Now) > 0;
-      }
-      set
-      {
-        IsCurrentlyWorking = value;
-      }
-    }
+    [Required]
     public DateTime EndWorkingDate { get; set; }
   }
 }

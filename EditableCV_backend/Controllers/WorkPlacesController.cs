@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using EditableCV_backend.Data;
+using EditableCV_backend.Data.WorkPlaceData;
 using EditableCV_backend.DataTransferObjects;
+using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -43,7 +44,7 @@ namespace EditableCV_backend.Controllers
       WorkPlace place = _mapper.Map<WorkPlace>(workPlaceDto);
       if (!place.IsValid)
       {
-        ModelState.AddModelError("ModelValidationError", "Received workplace data is invalid");
+        ModelState.AddModelError("ModelValidationError", "Received work place data is invalid");
         return BadRequest(ModelState);
       }
       _repository.CreateWorkPlace(place);
@@ -78,15 +79,15 @@ namespace EditableCV_backend.Controllers
 
       WorkPlaceUpdateDto workPlaceToPatch = _mapper.Map<WorkPlaceUpdateDto>(workPlaceFromRepo);
       patchDocument.ApplyTo(workPlaceToPatch, ModelState);
-      if (!TryValidateModel(workPlaceToPatch))
-      {
-        return ValidationProblem(ModelState);
-      }
-
       // updated work place for db context
-      _mapper.Map(workPlaceToPatch, workPlaceFromRepo);
+      WorkPlace workPlace = _mapper.Map(workPlaceToPatch, workPlaceFromRepo);
+      if (!workPlace.IsValid)
+      {
+        ModelState.AddModelError("ModelValidationError", "Received work place data is invalid");
+        return BadRequest(ModelState);
+      }
       // does nothing for current implementation, but it should be called because under _repository may be another implementation
-      _repository.UpdateWorkPlace(workPlaceFromRepo);
+      _repository.UpdateWorkPlace(workPlace);
       _repository.SaveChanges();
       return NoContent();
     }

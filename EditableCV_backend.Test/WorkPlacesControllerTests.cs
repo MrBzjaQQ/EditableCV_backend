@@ -1,7 +1,7 @@
 using AutoMapper;
 using EditableCV_backend.Controllers;
-using EditableCV_backend.Data;
-using EditableCV_backend.DataTransferObjects;
+using EditableCV_backend.Data.WorkPlaceData;
+using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using EditableCV_backend.Profiles;
 using Microsoft.AspNetCore.JsonPatch;
@@ -22,7 +22,7 @@ namespace EditableCV_backend.Test
     public WorkPlacesControllerTests()
     {
       _repo = new MockWorkPlaceRepository();
-      _profile = new WorkPlacesProfile();
+      _profile = new ResumeProfile();
       _config = new MapperConfiguration(p => p.AddProfile(_profile));
       _mapper = new Mapper(_config);
       var mockValidator = new Mock<IObjectModelValidator>();
@@ -116,6 +116,7 @@ namespace EditableCV_backend.Test
     [Fact]
     public void PatchWorkPlace_ShouldUpdateModel()
     {
+      // Arrange
       JsonPatchDocument<WorkPlaceUpdateDto> patchDoc = new JsonPatchDocument<WorkPlaceUpdateDto>(
         new List<Microsoft.AspNetCore.JsonPatch.Operations.Operation<WorkPlaceUpdateDto>>
         {
@@ -124,6 +125,7 @@ namespace EditableCV_backend.Test
         },
         new DefaultContractResolver()
       );
+      // Act & Assert
       Assert.IsType<NoContentResult>(_controller.PatchWorkPlace(ID, patchDoc));
       var okResult = Assert.IsType<OkObjectResult>(_controller.GetWorkPlace(ID).Result);
       var itemData = Assert.IsType<WorkPlaceReadDto>(okResult.Value);
@@ -134,6 +136,7 @@ namespace EditableCV_backend.Test
     [Fact]
     public void PatchWorkPlace_ShouldReturnValidationProblem()
     {
+      // TODO: NOT FINISHED
       JsonPatchDocument<WorkPlaceUpdateDto> patchDoc = new JsonPatchDocument<WorkPlaceUpdateDto>(
         new List<Microsoft.AspNetCore.JsonPatch.Operations.Operation<WorkPlaceUpdateDto>>
         {
@@ -142,10 +145,11 @@ namespace EditableCV_backend.Test
         },
         new DefaultContractResolver()
       );
+      Assert.IsType<BadRequestObjectResult>(_controller.PatchWorkPlace(ID, patchDoc));
     }
 
     private readonly MockWorkPlaceRepository _repo;
-    private readonly WorkPlacesProfile _profile;
+    private readonly ResumeProfile _profile;
     private readonly MapperConfiguration _config;
     private readonly Mapper _mapper;
     private readonly WorkPlacesController _controller;
