@@ -19,5 +19,6 @@ namespace EditableCV_backend.Data
     public DbSet<CommonInfo> CommonInfos { get; set; }
     public DbSet<EducationalInstitution> EducationalInstitutions { get; set; }
     public DbSet<Skill> Skills { get; set; }
+    public DbSet<ContactInfo> ContactInfos { get; set; }
   }
 }
