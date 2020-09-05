@@ -8,6 +8,7 @@ using EditableCV_backend.Data.CommonInfoData;
 using EditableCV_backend.Data.ContactInfoData;
 using EditableCV_backend.Data.EducationInstitutionData;
 using EditableCV_backend.Data.ImageData;
+using EditableCV_backend.Data.LandingData;
 using EditableCV_backend.Data.Skills;
 using EditableCV_backend.Data.WorkPlaceData;
 using Microsoft.AspNetCore.Builder;
@@ -50,6 +51,7 @@ namespace EditableCV_backend
       services.AddScoped<IEducationRepository, SqlEducationRepository>();
       services.AddScoped<ISkillsRepository, SqlSkillsRepository>();
       services.AddScoped<IContactInfoRepository, SqlContactInfoRepository>();
+      services.AddScoped<ILandingDataRepository, LandingDataRepository>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

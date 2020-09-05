@@ -4,6 +4,7 @@ using EditableCV_backend.Data.ContactInfoDto;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.DataTransferObjects.CommonInfoDto;
 using EditableCV_backend.DataTransferObjects.EducationalInstitutionDto;
+using EditableCV_backend.DataTransferObjects.LandingDto;
 using EditableCV_backend.DataTransferObjects.SkillDto;
 using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
@@ -24,6 +25,7 @@ namespace EditableCV_backend.Profiles
       CreateEducationMapping();
       CreateSkillMapping();
       CreateContactInfoMapping();
+      CreateLandingDataMapping();
     }
 
     private void CreateWorkPlaceMapping()
@@ -65,6 +67,11 @@ namespace EditableCV_backend.Profiles
     {
       CreateMap<ContactInfo, ContactInfoReadDto>();
       CreateMap<ContactInfoUpdateDto, ContactInfo>();
+    }
+
+    private void CreateLandingDataMapping()
+    {
+      CreateMap<LandingDataModel, LandingReadDto>();
     }
 
     private int GetAgeByDateOfBirth(DateTime dateOfBirth)
