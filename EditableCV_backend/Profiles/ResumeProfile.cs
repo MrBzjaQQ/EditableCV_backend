@@ -2,6 +2,7 @@
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.DataTransferObjects.CommonInfoDto;
 using EditableCV_backend.DataTransferObjects.EducationalInstitutionDto;
+using EditableCV_backend.DataTransferObjects.SkillDto;
 using EditableCV_backend.DataTransferObjects.WorkPlaceDto;
 using EditableCV_backend.Models;
 using System;
@@ -33,6 +34,11 @@ namespace EditableCV_backend.Profiles
       CreateMap<InstitutionCreateDto, EducationalInstitution>();
       CreateMap<InstitutionUpdateDto, EducationalInstitution>();
       CreateMap<EducationalInstitution, InstitutionUpdateDto>();
+
+      CreateMap<Skill, SkillReadDto>();
+      CreateMap<SkillCreateDto, Skill>();
+      CreateMap<SkillUpdateDto, Skill>();
+      CreateMap<Skill, SkillUpdateDto>();
     }
 
     private int GetAgeByDateOfBirth(DateTime dateOfBirth)
