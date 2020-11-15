@@ -11,15 +11,20 @@ using EditableCV_backend.Data.ImageData;
 using EditableCV_backend.Data.LandingData;
 using EditableCV_backend.Data.Skills;
 using EditableCV_backend.Data.WorkPlaceData;
+using EditableCV_backend.Models;
+using EditableCV_backend.Options.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 
 namespace EditableCV_backend
@@ -37,6 +42,24 @@ namespace EditableCV_backend
     {
       services.AddDbContext<ResumeContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("ResumeConnection")));
+
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+          options.RequireHttpsMetadata = false;
+          options.TokenValidationParameters = new TokenValidationParameters
+          {
+            ValidateIssuer = true,
+            ValidIssuer = AuthOptions.ISSUER,
+            ValidateAudience = true,
+            ValidAudience = AuthOptions.AUDIENCE,
+            ValidateLifetime = true,
+            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+            ValidateIssuerSigningKey = true,
+          };
+        });
+
+      services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ResumeContext>();
 
       services.AddControllers().AddNewtonsoftJson(s =>
       {
@@ -65,6 +88,7 @@ namespace EditableCV_backend
 
       app.UseRouting();
 
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>

@@ -6,6 +6,8 @@ using AutoMapper;
 using EditableCV_backend.Data.EducationInstitutionData;
 using EditableCV_backend.DataTransferObjects.EducationalInstitutionDto;
 using EditableCV_backend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EditableCV_backend.Controllers
 {
   [Route("api/education")]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   [ApiController]
   public class EducationController : ControllerBase
   {

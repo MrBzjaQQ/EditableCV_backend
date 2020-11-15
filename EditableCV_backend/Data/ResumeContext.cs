@@ -1,4 +1,5 @@
 ﻿using EditableCV_backend.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EditableCV_backend.Data
 {
-  public class ResumeContext : DbContext
+  public class ResumeContext : IdentityDbContext<User>
   {
     public ResumeContext(DbContextOptions<ResumeContext> options) : base(options)
     {
-
+      Database.EnsureCreated();
     }
 
     public DbSet<WorkPlace> WorkPlaces { get; set; }

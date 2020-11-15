@@ -7,12 +7,15 @@ using EditableCV_backend.Data.CommonInfoData;
 using EditableCV_backend.DataTransferObjects;
 using EditableCV_backend.DataTransferObjects.CommonInfoDto;
 using EditableCV_backend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditableCV_backend.Controllers
 {
   [Route("api/common-info")]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   [ApiController]
   public class CommonInfoController : ControllerBase
   {

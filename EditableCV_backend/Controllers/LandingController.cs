@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EditableCV_backend.Data.LandingData;
 using EditableCV_backend.DataTransferObjects.LandingDto;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditableCV_backend.Controllers
 {
-  [Route("api/landing")]
   [ApiController]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+  [Route("api/landing")]
   public class LandingController : ControllerBase
   {
     public LandingController(ILandingDataRepository repository, IMapper mapper)

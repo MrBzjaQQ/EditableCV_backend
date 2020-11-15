@@ -6,12 +6,15 @@ using AutoMapper;
 using EditableCV_backend.Data.ContactInfoData;
 using EditableCV_backend.Data.ContactInfoDto;
 using EditableCV_backend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditableCV_backend.Controllers
 {
   [Route("api/contact-info")]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   [ApiController]
   public class ContactInfoController : ControllerBase
   {
